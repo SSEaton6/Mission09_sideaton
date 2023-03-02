@@ -28,9 +28,10 @@ namespace Mission09_sideaton.Infrastructure
         public string PageAction { get; set; }
         public override void Process(TagHelperContext thc, TagHelperOutput tho)
         {
+            // creates a div tag with an a tag inside so that we can move through different pages of books
             IUrlHelper uh = uhf.GetUrlHelper(vc);
             TagBuilder final = new TagBuilder("div");
-            for(int i = 1;i<PageModel.totalPages;i++)
+            for(int i = 1;i<=PageModel.totalPages;i++)
             {
                 TagBuilder tb = new TagBuilder("a");
                 tb.Attributes["href"] = uh.Action(PageAction, new { PageNum = i });

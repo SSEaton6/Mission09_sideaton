@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 
 namespace Mission09_sideaton.Models.ViewModels
 {
+
+    //class to hold the page info so that we can paginate throught the books, instead of displaying them all at once
     public class PageInfo
     {
         public int totalNumBooks { get; set; }
