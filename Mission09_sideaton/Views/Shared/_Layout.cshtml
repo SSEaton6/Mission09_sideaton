@@ -7,8 +7,19 @@
     <link href="/lib/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <div>
-        @RenderBody()
+    <div class="bg-dark text-white p-2 text-center">
+        <span class="navbar-brand m-lg-2 text-uppercase">online bookstore</span>
+    </div>
+    @* Creates two columns, one for filtering, and the other to display books *@
+    <div class="row m-1 p-1">
+        <div id="categories" class="col-3">
+            <vc:categories></vc:categories>
+        </div>
+        <div class="col-9">
+            <div>
+                @RenderBody()
+            </div>
+        </div>
     </div>
 </body>
 </html>

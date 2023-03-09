@@ -1,0 +1,37 @@
+﻿@page
+@model Mission09_sideaton.Pages.CartModel
+@{
+}
+
+<h2 class="text-center">Your Shopping Cart</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Cost</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @* Loops through the items in the shopping cart and lists them out. It also add together the subtotal for the order *@
+        @foreach(var b in Model.cart.Items)
+        {
+            <tr>
+                <td>@b.Book.Title</td>
+                <td>@b.Quantity</td>
+                <td>@b.Book.Price</td>
+                <td>@(b.Quantity * b.Book.Price)</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">Total:</td>
+            <td>@Model.cart.CalculateTotal().ToString("c")</td>
+        </tr>
+    </tfoot>
+</table>
+<div>
+    <a class="btn btn-success fw-bold" href ="@Model.ReturnUrl">Continue Shopping</a>
+</div>

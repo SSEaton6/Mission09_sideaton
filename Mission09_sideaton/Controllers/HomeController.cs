@@ -17,7 +17,7 @@ namespace Mission09_sideaton.Controllers
             repo = temp;
         }
 
-        public IActionResult Index(int pageNum = 1)
+        public IActionResult Index(string bookCategory,int pageNum = 1)
         {
             //limits the number of books to 10 per page
             int pageSize = 10;
@@ -26,6 +26,7 @@ namespace Mission09_sideaton.Controllers
             var x = new BooksViewModel
             {
                     Books = repo.Books
+                    .Where(b => b.Category == bookCategory | bookCategory == null)
                     .OrderBy(b => b.Title)
                     //skips the books for the previous page. makes sure to skip 0 the first time.
                     .Skip((pageNum - 1) * pageSize)
@@ -33,7 +34,9 @@ namespace Mission09_sideaton.Controllers
                     // creates new instance of pageInfo class
                     PageInfo = new PageInfo
                     { 
-                        totalNumBooks = repo.Books.Count(),
+                        totalNumBooks = (bookCategory == null 
+                        ? repo.Books.Count() 
+                        : repo.Books.Where(x => x.Category == bookCategory).Count()),
                         booksPerPage = pageSize,
                         currentPage = pageNum
                     }

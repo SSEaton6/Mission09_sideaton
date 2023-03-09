@@ -2,21 +2,15 @@
     ViewBag.Title = "Online Store";
 }
 @model BooksViewModel
-<h1>Welcome to our Online Book Store!</h1>
-<div style="display:flex; flex-direction:column; align-items:center;">
+
+<div>
     @foreach (Book b in Model.Books)
     {
-        <h3>@b.Title</h3>
-        <ul>
-            <li>Author: @b.Author</li>
-            <li>Publisher: @b.Publisher</li>
-            <li>ISBN: @b.Isbn</li>
-            <li>Classification: @b.Classification</li>
-            <li>Category: @b.Category</li>
-            <li>Page Count: @b.PageCount</li>
-            <li>Price: $@b.Price</li>
-        </ul>
+        <partial name="BookSummary" model="b"/>
     }
 
 </div>
-    <div page-model="@Model.PageInfo" page-action="Index"></div>
+    <div page-model="@Model.PageInfo" page-action="Index" page-class="btn"
+         page-class-normal ="btn-outline-dark" page-class-selected="btn-success" 
+         class="btn-group pull-right m-1" page-classes-enabled ="true"
+         ></div>

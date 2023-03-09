@@ -26,6 +26,10 @@ namespace Mission09_sideaton.Infrastructure
 
         public PageInfo PageModel { get; set; }
         public string PageAction { get; set; }
+        public string PageClass { get; set; }
+        public bool PageClassesEnabled { get; set; }
+        public string PageClassNormal { get; set; }
+        public string PageClassSelected { get; set; }
         public override void Process(TagHelperContext thc, TagHelperOutput tho)
         {
             // creates a div tag with an a tag inside so that we can move through different pages of books
@@ -35,6 +39,13 @@ namespace Mission09_sideaton.Infrastructure
             {
                 TagBuilder tb = new TagBuilder("a");
                 tb.Attributes["href"] = uh.Action(PageAction, new { PageNum = i });
+                if(PageClassesEnabled)
+                {
+                    tb.AddCssClass(PageClass);
+                    tb.AddCssClass(i == PageModel.currentPage ? PageClassSelected : PageClassNormal);
+                }
+
+                tb.AddCssClass(PageClass);
                 tb.InnerHtml.Append(i.ToString());
 
                 final.InnerHtml.AppendHtml(tb);
