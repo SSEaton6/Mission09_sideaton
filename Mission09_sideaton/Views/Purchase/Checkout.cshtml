@@ -1,0 +1,51 @@
+﻿@{
+}
+@model Purchase
+
+<h2>Checkout</h2>
+<p>Please enter your details, and we will happily send your purchases to you!</p>
+
+<form method="post" asp-contoller='Purchase'asp-action="Checkout">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <h4>Ship to</h4>
+    <div class="form-group">
+        <label asp-for="Name">Name:</label>
+        <input asp-for="Name" class="form-control" />
+
+    </div>
+    <h4>Address:</h4>
+    <div class="form-group">
+        <label asp-for="AddressLine1">Address Line 1:</label>
+        <input asp-for="AddressLine1" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="AddressLine2">Address Line 2:</label>
+        <input asp-for="AddressLine2" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="AddressLine3">Address Line 3:</label>
+        <input asp-for="AddressLine3" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="City">City:</label>
+        <input asp-for="City" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="State">State:</label>
+        <input asp-for="State" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Zip">Zip:</label>
+        <input asp-for="Zip" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Country">Country:</label>
+        <input asp-for="Country" class="form-control" />
+    </div>
+   <div class="float-end">
+       <input class="btn btn-success" type="submit" value="Make Purchase" />
+
+   </div>
+
+</form>
+
